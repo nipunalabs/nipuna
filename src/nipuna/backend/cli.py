@@ -1,5 +1,5 @@
 import click
-from components.API_handler import start_components
+from backend.handler import start_components
 
 @click.group()
 def cli():
@@ -10,3 +10,6 @@ def cli():
 @click.argument("start")
 def cli(start):
     start_components()
+
+if __name__ == '__main__':
+    cli()

@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+.color-text {
+    @apply font-bold transition-colors duration-200;
+  }

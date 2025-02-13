@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import RedirectResponse,FileResponse
 from fastapi.staticfiles import StaticFiles
-from scripts.frontend_build import build_frontend
+from ..scripts.frontend_build import build_frontend
 
 app = FastAPI()
 

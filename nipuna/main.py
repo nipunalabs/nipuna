@@ -1,5 +1,5 @@
-from backend.cli import cli
-from Nipuna import Nipuna
+from .cli import cli
+from .Nipuna import Nipuna
 
 if __name__ == '__main__':
     nipuna_client = Nipuna()

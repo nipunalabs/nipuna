@@ -1,8 +1,7 @@
 import typing
-from yaml import load, dump
 import os
-from backend.utils.config_handler import YAMLHandler
-from backend.utils.data_handler import DataHandler
+from .backend.utils.config_handler import YAMLHandler
+from .backend.utils.data_handler import DataHandler
 
 class Nipuna():
     def __init__(self):
@@ -16,4 +15,6 @@ class Nipuna():
         package_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
         yaml_path = os.path.join(package_dir, path)
+        os.chdir(yaml_path)
         self.yamlHandler.generate_assets(yaml_path)
+

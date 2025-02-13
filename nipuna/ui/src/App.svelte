@@ -17,7 +17,7 @@
 </script>
 
 <div class="absolute left-1/2 top-1/2 translate-y-1/2 -translate-x-1/2 ">
-    <p class="text-blue-600 text-6xl text-center color-text" style="color: {textColor};">Welcome to Nipuna Labs
+    <p class="text-blue-600 text-6xl text-center color-text" style="color: {textColor};">Nipuna(Expert) Agents
     </p>
     <p class="text-2xl color-text" style="color: {textColor};">
         Declarative Framework on Steroids to Create, Run and Deploy AI Agents at Scale.

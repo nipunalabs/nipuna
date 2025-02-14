@@ -1,4 +1,4 @@
-from .cli import cli
+from .cli.cli import cli
 from .Nipuna import Nipuna
 
 if __name__ == '__main__':

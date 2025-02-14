@@ -1,6 +1,6 @@
 import click
-from .backend.api_handler import start_components
-from .backend.utils.config_handler import YAMLHandler
+from ..backend.api.api_handler import start_components
+from ..backend.utils.config_handler import YAMLHandler
 
 @click.group()
 def nipuna():

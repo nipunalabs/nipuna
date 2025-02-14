@@ -15,6 +15,5 @@ class Nipuna():
         package_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
         yaml_path = os.path.join(package_dir, path)
-        os.chdir(yaml_path)
         self.yamlHandler.generate_assets(yaml_path)
 

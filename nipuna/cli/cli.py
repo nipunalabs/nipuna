@@ -4,7 +4,7 @@ import ast
 from ..backend.api.api_handler import start_components
 from ..backend.utils.config_handler import YAMLHandler
 from ..backend.utils.model_handler import ModelHandler
-
+from ..workflow.chaining import WorkflowChaining
 @click.group()
 def nipuna():
     """Nipuna cli"""
@@ -24,8 +24,10 @@ def create(workflow_name):
 @click.argument("start")
 @click.option("--file_path")
 def start(start, file_path):
-    model = ModelHandler(project_name=start, file_path=file_path)
-    model.chat()
+    chains = WorkflowChaining(project_name=start, file_path=file_path)
+    print(chains.chain())
+    # model = ModelHandler(project_name=start, file_path=file_path)
+    # model.trigger_model()
 
 
 

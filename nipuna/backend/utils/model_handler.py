@@ -33,10 +33,10 @@ class ModelHandler:
 
         if "image_path" not in configs[model_from_config]:
             task, client, model_name,role = configs[model_from_config].values()
-            prompt = workflow_configs[0]['prompt']
+            workflow_task_type, prompt,type = workflow_configs[0]
         else:
             task, client, model_name,role, image_path = configs[model_from_config].values()
-            prompt = workflow_configs[0]['prompt']
+            workflow_task_type, prompt, type = workflow_configs[0]
 
 
         model_dict = self.model_init(model_name=model_name)

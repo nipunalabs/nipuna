@@ -192,3 +192,4 @@ dist-ssr
 *.sln
 *.sw?
 *ui_bkp
+sample/

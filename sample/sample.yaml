@@ -1,2 +1,17 @@
 data_source_path: s3
 project_name: sample
+
+custom_ollama:
+  client: "ollama"
+  model_name: "llama3.1:8b"
+  client_type: "my-assistant"
+  system: "You are a Data Engineer proficient in SQL"
+
+LLM_CHAT:
+  client: 'ollama'
+  model_name: "llama3.1:8b"
+  role: "user"
+  prompt: "How to print in python"
+
+WORKFLOW:
+  model: "LLM_CHAT"

@@ -129,8 +129,9 @@ venv_nipuna
 ENV/
 env.bak/
 venv_nipuna.bak/
-kriopy-frontend
-
+.venv
+venv
+venv.bak/
 # Spyder project settings
 .spyderproject
 .spyproject

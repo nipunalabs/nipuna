@@ -6,8 +6,8 @@ class ModelHandler:
     def __init__(self, project_name: str, file_path: str):
         self.project_name = project_name
         self.file_path = file_path
-        self.handler = YAMLHandler(project_name=self.project_name)
-        self.configs = self.handler.read_yaml_configs(self.file_path)
+        # self.handler = YAMLHandler(project_name=self.project_name)
+        # self.configs = self.handler.read_yaml_configs(self.file_path)
 
     def model_init(self, model_name: str):
         # print(self.configs.keys())
@@ -22,13 +22,32 @@ class ModelHandler:
         # print(model_ref)
         # return model_ref
     
-    def chat(self):
-        workflow_configs = self.configs['WORKFLOW']
-        client, model_name,role, content = self.configs[workflow_configs['model']].values()
+    def trigger_model(self,configs, workflow_configs):
+        # workflow_configs = self.configs['WORKFLOW']
+        # print(workflow_configs[0])
+        
+        config_model = workflow_configs[0].keys()
+        model_from_config = workflow_configs[0][list(config_model)[0]]
+        print(configs[model_from_config])
+
+
+        if "image_path" not in configs[model_from_config]:
+            task, client, model_name,role = configs[model_from_config].values()
+            prompt = workflow_configs[0]['prompt']
+        else:
+            task, client, model_name,role, image_path = configs[model_from_config].values()
+            prompt = workflow_configs[0]['prompt']
+
+
         model_dict = self.model_init(model_name=model_name)
         model = model_dict[client]
-        model_resp = model.chat_with_model(role=role, content=content)
-        print(model_resp)
+
+        if task == 'chat':
+            model_resp = model.chat_with_model(role=role, content=prompt)
+            model_resp
+        elif task == 'image_analsis':
+            model_resp = model.analyze_image(model=model_name, content=prompt, role=role, image_path=image_path)
+        return model_resp
 
 class OllamaHandler:
     def __init__(self, model_name: str):
@@ -55,3 +74,17 @@ class OllamaHandler:
 
         chat_resp = chat(model=self.model_name, messages=messages)
         return chat_resp
+    
+    def analyze_image(self, model: str, content: str, role: str, image_path: str):
+        print("Generating response...")
+        response = chat(
+            model= model,
+            messages=[
+                {
+                'role': role,
+                'content': content,
+                'images': [image_path],
+                }
+            ],
+            )
+        return response

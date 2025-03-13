@@ -2,7 +2,7 @@ from ..backend.utils.model_handler import ModelHandler
 from ..backend.utils.config_handler import YAMLHandler
 
 class WorkflowChaining:
-    def __init__(self, project_name, file_path):
+    def __init__(self, project_name: str, file_path: str):
         self.project_name = project_name
         self.file_path = file_path
 
@@ -15,5 +15,6 @@ class WorkflowChaining:
         configs = self.workflow_config()
         model_handler = ModelHandler(project_name=self.project_name, file_path=self.file_path)
         response = model_handler.trigger_model(configs, configs['WORKFLOW'])
+        
         return response
 

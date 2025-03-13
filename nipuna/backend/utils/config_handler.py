@@ -3,14 +3,14 @@ import os
 import ast
 
 class YAMLHandler:
-    def __init__(self, project_name):
+    def __init__(self, project_name: str):
         self.project_name = project_name
 
-    def read_yaml_configs(self, yaml_config_file: str = None ):
-        if not yaml_config_file:
-            yaml_config_file = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"utils/samples/sample.yaml")
+    def read_yaml_configs(self, yaml_config_path: str = None ):
+        if not yaml_config_path:
+            yaml_config_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"utils/samples/sample.yaml")
 
-        open_yaml = open(yaml_config_file, "r")
+        open_yaml = open(yaml_config_path, "r")
         parse_yaml = safe_load(open_yaml)
         parse_yaml['project_name'] = self.project_name
         return parse_yaml

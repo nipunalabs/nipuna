@@ -22,25 +22,24 @@ class ModelHandler:
         # print(model_ref)
         # return model_ref
     
+    def generate_model_instances(self):
+        pass
+
     def trigger_model(self,configs, workflow_configs):
-        # workflow_configs = self.configs['WORKFLOW']
-        # print(workflow_configs[0])
-        
+        # workflow_configs = self.configs['WORKFLOW']        
         config_model = workflow_configs[0].keys()
         model_from_config = workflow_configs[0][list(config_model)[0]]
-        print(configs[model_from_config])
-
 
         if "image_path" not in configs[model_from_config]:
-            task, client, model_name,role = configs[model_from_config].values()
+            task, provider, model_name,role = configs[model_from_config].values()
             workflow_task_type, prompt,type = workflow_configs[0]
         else:
-            task, client, model_name,role, image_path = configs[model_from_config].values()
+            task, provider, model_name,role, image_path = configs[model_from_config].values()
             workflow_task_type, prompt, type = workflow_configs[0]
 
 
         model_dict = self.model_init(model_name=model_name)
-        model = model_dict[client]
+        model = model_dict[provider]
 
         if task == 'chat':
             model_resp = model.chat_with_model(role=role, content=prompt)
